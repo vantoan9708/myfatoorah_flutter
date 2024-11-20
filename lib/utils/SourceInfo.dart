@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
-import 'package:device_info/device_info.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:myfatoorah_flutter/utils/AppConstants.dart';
 
 class SourceInfo {
@@ -111,10 +111,10 @@ class SourceInfo {
     try {
       if (Platform.isAndroid) {
         AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-        id = androidInfo.androidId;
+        id = androidInfo.id;
       } else if (Platform.isIOS) {
         IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-        id = iosInfo.identifierForVendor;
+        id = iosInfo.identifierForVendor ?? '';
       }
     } catch (_) {}
 
